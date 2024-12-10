@@ -138,6 +138,7 @@ class _SelectableTextSelectionGestureDetectorBuilder extends TextSelectionGestur
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           renderEditable.selectPosition(cause: SelectionChangedCause.tap);
       }
@@ -635,6 +636,7 @@ class _SelectableTextState extends State<SelectableText> implements TextSelectio
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.windows:
+      case TargetPlatform.ohos:
       // Do nothing.
     }
   }
@@ -724,6 +726,7 @@ class _SelectableTextState extends State<SelectableText> implements TextSelectio
 
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         forcePressEnabled = false;
         textSelectionControls ??= materialTextSelectionHandleControls;
         paintCursorAboveText = false;

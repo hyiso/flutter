@@ -1287,6 +1287,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(controller.selection, const TextSelection.collapsed(offset: 8));
         expect(find.text('Cut'), findsNothing);
@@ -1312,6 +1313,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(controller.selection, const TextSelection.collapsed(offset: 8));
         expect(find.text('Cut'), findsNothing);

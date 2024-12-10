@@ -92,6 +92,7 @@ class VariableDumpMachineProjectValidator extends MachineProjectValidator {
       'Platform.isWindows':               platform.isWindows,
       'Platform.isMacOS':                 platform.isMacOS,
       'Platform.isFuchsia':               platform.isFuchsia,
+      'Platform.isOhos':                  platform.isOhos,
       'Platform.pathSeparator':           platform.pathSeparator,
 
       // Cache

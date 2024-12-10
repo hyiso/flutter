@@ -219,6 +219,8 @@ class KernelSnapshotProgram extends Target {
       case TargetPlatform.fuchsia_x64:
       case TargetPlatform.ios:
       case TargetPlatform.linux_arm64:
+      case TargetPlatform.ohos_x64:
+      case TargetPlatform.ohos_arm64:
       case TargetPlatform.tester:
       case TargetPlatform.web_javascript:
         forceLinkPlatform = false;
@@ -235,6 +237,8 @@ class KernelSnapshotProgram extends Target {
       TargetPlatform.darwin => 'macos',
       TargetPlatform.ios => 'ios',
       TargetPlatform.linux_arm64 || TargetPlatform.linux_x64 => 'linux',
+      /// TODO(hyiso): change to 'ohos' after updated [TargetOS] in dart pkg/vm/lib/target_os.dart.
+      TargetPlatform.ohos_arm64 || TargetPlatform.ohos_x64 => 'ohos',
       TargetPlatform.windows_arm64 || TargetPlatform.windows_x64 => 'windows',
       TargetPlatform.tester || TargetPlatform.web_javascript => null,
     };

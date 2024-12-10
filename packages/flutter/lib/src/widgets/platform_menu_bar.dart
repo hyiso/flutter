@@ -851,6 +851,7 @@ class PlatformProvidedMenuItem extends PlatformMenuItem {
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         return false;
       case TargetPlatform.macOS:

@@ -724,6 +724,7 @@ class TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
       TargetPlatform.windows => 24.0,
       TargetPlatform.android ||
       TargetPlatform.fuchsia ||
+      TargetPlatform.ohos    ||
       TargetPlatform.iOS     => 32.0,
     };
   }
@@ -735,6 +736,7 @@ class TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
       TargetPlatform.windows => const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       TargetPlatform.android ||
       TargetPlatform.fuchsia ||
+      TargetPlatform.ohos    ||
       TargetPlatform.iOS     => const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
     };
   }
@@ -746,6 +748,7 @@ class TooltipState extends State<Tooltip> with SingleTickerProviderStateMixin {
       TargetPlatform.windows => 12.0,
       TargetPlatform.android ||
       TargetPlatform.fuchsia ||
+      TargetPlatform.ohos    ||
       TargetPlatform.iOS     => 14.0,
     };
   }

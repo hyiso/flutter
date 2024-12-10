@@ -6864,6 +6864,7 @@ void main() {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           expect(controller.selection.baseOffset, toOffset);
           expect(controller.selection.extentOffset, testValue.length);
@@ -8680,6 +8681,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(controller.selection.baseOffset, 35);
     }
@@ -9161,6 +9163,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(controller.selection, const TextSelection.collapsed(offset: 8));
         expect(find.text('Cut'), findsNothing);
@@ -9185,6 +9188,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(controller.selection, const TextSelection.collapsed(offset: 8));
         expect(find.text('Cut'), findsNothing);
@@ -9481,7 +9485,7 @@ void main() {
                 <TargetPlatform>{TargetPlatform.iOS, TargetPlatform.android}));
       });
 
-      testWidgets('should build nothing on all platforms but iOS and Android', (WidgetTester tester) async {
+      testWidgets('should build nothing on all platforms but iOS and Android、OpenHarmony', (WidgetTester tester) async {
         await tester.pumpWidget(const CupertinoApp(
           home: CupertinoTextField(),
         ));
@@ -9500,7 +9504,7 @@ void main() {
             isNull);
       },
           variant: TargetPlatformVariant.all(
-              excluding: <TargetPlatform>{TargetPlatform.iOS, TargetPlatform.android}));
+              excluding: <TargetPlatform>{TargetPlatform.iOS, TargetPlatform.android, TargetPlatform.ohos }));
     });
 
     testWidgets('Can drag handles to show, unshow, and update magnifier',

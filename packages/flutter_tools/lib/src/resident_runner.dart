@@ -1626,6 +1626,11 @@ Future<String?> getMissingPackageHintForPlatform(TargetPlatform platform) async 
       return 'Is your project missing an $manifestPath?\nConsider running "flutter create ." to create one.';
     case TargetPlatform.ios:
       return 'Is your project missing an ios/Runner/Info.plist?\nConsider running "flutter create ." to create one.';
+    case TargetPlatform.ohos_arm64:
+    case TargetPlatform.ohos_x64:
+      final FlutterProject project = FlutterProject.current();
+      final String appJsonPath = globals.fs.path.relative(project.ohos.appJsonFile.path);
+      return 'Is your project missing an $appJsonPath?\nConsider running "flutter create ." to create one.';
     case TargetPlatform.android:
     case TargetPlatform.darwin:
     case TargetPlatform.fuchsia_arm64:
@@ -1893,6 +1898,7 @@ String nextPlatform(String currentPlatform) {
     'macOS',
     'linux',
     'fuchsia',
+    'ohos',
   ];
   final int index = platforms.indexOf(currentPlatform);
   assert(index >= 0, 'unknown platform "$currentPlatform"');

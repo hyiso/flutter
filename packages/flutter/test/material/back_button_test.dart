@@ -205,6 +205,7 @@ void main() {
       case TargetPlatform.iOS:
       case TargetPlatform.linux:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expectedLabel = null;
     }
@@ -249,6 +250,7 @@ void main() {
       case TargetPlatform.iOS:
       case TargetPlatform.linux:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expectedLabel = null;
     }

@@ -116,6 +116,7 @@ class _SwitchThemeAdaptation extends Adaptation<SwitchThemeData> {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         return defaultValue;
       case TargetPlatform.iOS:

@@ -607,6 +607,7 @@ class RefreshIndicatorState extends State<RefreshIndicator> with TickerProviderS
                           case TargetPlatform.android:
                           case TargetPlatform.fuchsia:
                           case TargetPlatform.linux:
+                          case TargetPlatform.ohos:
                           case TargetPlatform.windows:
                             return materialIndicator;
                           case TargetPlatform.iOS:

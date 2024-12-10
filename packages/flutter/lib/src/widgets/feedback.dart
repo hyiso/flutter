@@ -96,6 +96,7 @@ abstract final class Feedback {
         return SystemSound.play(SystemSoundType.click);
       case TargetPlatform.iOS:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.macOS:
       case TargetPlatform.windows:
         return Future<void>.value();
@@ -138,6 +139,7 @@ abstract final class Feedback {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         return HapticFeedback.vibrate();
       case TargetPlatform.iOS:
         return Future.wait(<Future<void>>[

@@ -33,6 +33,7 @@ abstract final class SystemNavigator {
       case TargetPlatform.macOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         return;
       case TargetPlatform.android:

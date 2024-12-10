@@ -42,6 +42,9 @@ class FlutterFeatureFlags implements FeatureFlags {
   bool get isFuchsiaEnabled => isEnabled(flutterFuchsiaFeature);
 
   @override
+  bool get isOhosEnabled => isEnabled(flutterOhosFeature);
+
+  @override
   bool get areCustomDevicesEnabled => isEnabled(flutterCustomDevicesFeature);
 
   @override

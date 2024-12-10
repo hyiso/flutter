@@ -1312,7 +1312,7 @@ void main() {
     await tester.pump();
 
     final bool isMobile = switch (themeData.platform) {
-      TargetPlatform.android || TargetPlatform.iOS || TargetPlatform.fuchsia => true,
+      TargetPlatform.android || TargetPlatform.iOS || TargetPlatform.fuchsia || TargetPlatform.ohos => true,
       TargetPlatform.macOS || TargetPlatform.linux || TargetPlatform.windows => false,
     };
     int expectedCount = isMobile ? 0 : 1;
