@@ -72,6 +72,9 @@ enum Artifact {
 
   /// Pre-built desktop debug app.
   flutterPreviewDevice,
+
+  /// flutter.har for ohos
+  flutterHar,
 }
 
 /// A subset of [Artifact]s that are platform and build mode independent
@@ -168,6 +171,8 @@ TargetPlatform? _mapTargetPlatform(TargetPlatform? targetPlatform) {
     case TargetPlatform.android_arm64:
     case TargetPlatform.android_x64:
     case TargetPlatform.android_x86:
+    case TargetPlatform.ohos_arm64:
+    case TargetPlatform.ohos_x64:
     case null:
       return targetPlatform;
   }
@@ -239,6 +244,8 @@ String? _artifactToFileName(Artifact artifact, Platform hostPlatform, [ BuildMod
       return '';
     case Artifact.flutterPreviewDevice:
       return 'flutter_preview$exe';
+    case Artifact.flutterHar:
+      return 'flutter.har';
   }
 }
 
@@ -585,6 +592,9 @@ class CachedArtifacts implements Artifacts {
       case TargetPlatform.fuchsia_arm64:
       case TargetPlatform.fuchsia_x64:
         return _getFuchsiaArtifactPath(artifact, platform!, mode!);
+      case TargetPlatform.ohos_arm64:
+      case TargetPlatform.ohos_x64:
+        return _getOhosArtifactPath(artifact, platform ?? _currentHostPlatform(_platform, _operatingSystemUtils), mode!);
       case TargetPlatform.tester:
       case TargetPlatform.web_javascript:
       case null:
@@ -647,6 +657,7 @@ class CachedArtifacts implements Artifacts {
       case Artifact.windowsDesktopPath:
       case Artifact.flutterToolsFileGenerators:
       case Artifact.flutterPreviewDevice:
+      case Artifact.flutterHar:
         return _getHostArtifactPath(artifact, platform, mode);
     }
   }
@@ -690,6 +701,7 @@ class CachedArtifacts implements Artifacts {
       case Artifact.windowsDesktopPath:
       case Artifact.flutterToolsFileGenerators:
       case Artifact.flutterPreviewDevice:
+      case Artifact.flutterHar:
         return _getHostArtifactPath(artifact, platform, mode);
     }
   }
@@ -736,6 +748,51 @@ class CachedArtifacts implements Artifacts {
       case Artifact.isolateSnapshotData:
       case Artifact.linuxDesktopPath:
       case Artifact.linuxHeaders:
+      case Artifact.platformLibrariesJson:
+      case Artifact.skyEnginePath:
+      case Artifact.vmSnapshotData:
+      case Artifact.windowsCppClientWrapper:
+      case Artifact.windowsDesktopPath:
+      case Artifact.flutterToolsFileGenerators:
+      case Artifact.flutterPreviewDevice:
+      case Artifact.flutterHar:
+        return _getHostArtifactPath(artifact, platform, mode);
+    }
+  }
+
+  String _getOhosArtifactPath(Artifact artifact, TargetPlatform platform, BuildMode mode) {
+    final String engineDir = _getEngineArtifactsPath(platform, mode)!;
+    switch (artifact) {
+      case Artifact.genSnapshot:
+        assert(mode != BuildMode.debug, 'Artifact $artifact only available in non-debug mode.');
+        final String hostPlatform = getNameForHostPlatform(globals.platform.isMacOS ? HostPlatform.darwin_x64 : getCurrentHostPlatform());
+        return _fileSystem.path.join(engineDir, hostPlatform, _artifactToFileName(artifact, _platform));
+      case Artifact.flutterHar:
+        final String artifactFileName = _artifactToFileName(artifact, _platform)!;
+        final String engineDir = _getEngineArtifactsPath(platform, mode)!;
+        return _fileSystem.path.join(engineDir, artifactFileName);
+      case Artifact.engineDartSdkPath:
+      case Artifact.engineDartBinary:
+      case Artifact.engineDartAotRuntime:
+      case Artifact.dart2jsSnapshot:
+      case Artifact.dart2wasmSnapshot:
+      case Artifact.frontendServerSnapshotForEngineDartSdk:
+      case Artifact.constFinder:
+      case Artifact.flutterFramework:
+      case Artifact.flutterFrameworkDsym:
+      case Artifact.flutterMacOSFramework:
+      case Artifact.flutterMacOSXcframework:
+      case Artifact.flutterPatchedSdkPath:
+      case Artifact.flutterTester:
+      case Artifact.flutterXcframework:
+      case Artifact.fontSubset:
+      case Artifact.fuchsiaFlutterRunner:
+      case Artifact.fuchsiaKernelCompiler:
+      case Artifact.icuData:
+      case Artifact.isolateSnapshotData:
+      case Artifact.linuxDesktopPath:
+      case Artifact.linuxHeaders:
+      case Artifact.platformKernelDill:
       case Artifact.platformLibrariesJson:
       case Artifact.skyEnginePath:
       case Artifact.vmSnapshotData:
@@ -823,6 +880,7 @@ class CachedArtifacts implements Artifacts {
                      .path;
       case Artifact.flutterFramework:
       case Artifact.flutterFrameworkDsym:
+      case Artifact.flutterHar:
       case Artifact.flutterXcframework:
       case Artifact.fuchsiaFlutterRunner:
       case Artifact.fuchsiaKernelCompiler:
@@ -863,6 +921,8 @@ class CachedArtifacts implements Artifacts {
       case TargetPlatform.android_arm64:
       case TargetPlatform.android_x64:
       case TargetPlatform.android_x86:
+      case TargetPlatform.ohos_arm64:
+      case TargetPlatform.ohos_x64:
         assert(mode != null, 'Need to specify a build mode for platform $platform.');
         final String suffix = mode != BuildMode.debug ? '-${kebabCase(mode!.cliName)}' : '';
         return _fileSystem.path.join(engineDir, platformName + suffix);
@@ -1141,6 +1201,7 @@ class CachedLocalEngineArtifacts implements Artifacts {
       case Artifact.vmSnapshotData:
         return _fileSystem.path.join(localEngineInfo.targetOutPath, 'gen', 'flutter', 'lib', 'snapshot', artifactFileName);
       case Artifact.icuData:
+      case Artifact.flutterHar:
       case Artifact.flutterXcframework:
       case Artifact.flutterMacOSXcframework:
         return _fileSystem.path.join(localEngineInfo.targetOutPath, artifactFileName);
@@ -1263,6 +1324,8 @@ class CachedLocalEngineArtifacts implements Artifacts {
       case TargetPlatform.fuchsia_x64:
       case TargetPlatform.web_javascript:
       case TargetPlatform.tester:
+      case TargetPlatform.ohos_arm64:
+      case TargetPlatform.ohos_x64:
         throwToolExit('Unsupported host platform: $hostPlatform');
     }
   }
@@ -1359,6 +1422,7 @@ class CachedLocalWebSdkArtifacts implements Artifacts {
         case Artifact.constFinder:
         case Artifact.flutterToolsFileGenerators:
         case Artifact.flutterPreviewDevice:
+        case Artifact.flutterHar:
           break;
       }
     }
@@ -1487,6 +1551,8 @@ class CachedLocalWebSdkArtifacts implements Artifacts {
       case TargetPlatform.android_x86:
       case TargetPlatform.fuchsia_arm64:
       case TargetPlatform.fuchsia_x64:
+      case TargetPlatform.ohos_arm64:
+      case TargetPlatform.ohos_x64:
       case TargetPlatform.web_javascript:
       case TargetPlatform.tester:
         throwToolExit('Unsupported host platform: $hostPlatform');

@@ -508,6 +508,8 @@ Future<Uri?> dryRunNativeAssets({
       );
     case build_info.TargetPlatform.fuchsia_arm64:
     case build_info.TargetPlatform.fuchsia_x64:
+    case build_info.TargetPlatform.ohos_arm64:
+    case build_info.TargetPlatform.ohos_x64:
     case build_info.TargetPlatform.web_javascript:
       await ensureNoNativeAssetsOrOsIsSupported(
         projectUri,
@@ -823,6 +825,8 @@ Target _getNativeTarget(build_info.TargetPlatform targetPlatform) {
     case build_info.TargetPlatform.darwin:
     case build_info.TargetPlatform.fuchsia_arm64:
     case build_info.TargetPlatform.fuchsia_x64:
+    case build_info.TargetPlatform.ohos_arm64:
+    case build_info.TargetPlatform.ohos_x64:
     case build_info.TargetPlatform.tester:
     case build_info.TargetPlatform.web_javascript:
     case build_info.TargetPlatform.android_arm:

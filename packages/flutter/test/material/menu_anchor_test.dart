@@ -2110,6 +2110,7 @@ void main() {
       Text mnemonic3;
 
       switch (defaultTargetPlatform) {
+        case TargetPlatform.ohos:
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
@@ -3246,6 +3247,7 @@ void main() {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           expectedCtrl = 'Ctrl';
           expectedMeta = defaultTargetPlatform == TargetPlatform.windows ? 'Win' : 'Meta';
@@ -3273,6 +3275,7 @@ void main() {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           allExpected = <String>[expectedAlt, expectedCtrl, expectedMeta, expectedShift, 'A'].join(expectedSeparator);
         case TargetPlatform.iOS:

@@ -526,6 +526,8 @@ class MDnsVmServiceDiscovery {
       case TargetPlatform.fuchsia_x64:
       case TargetPlatform.linux_arm64:
       case TargetPlatform.linux_x64:
+      case TargetPlatform.ohos_arm64:
+      case TargetPlatform.ohos_x64:
       case TargetPlatform.tester:
       case TargetPlatform.web_javascript:
       case TargetPlatform.windows_x64:

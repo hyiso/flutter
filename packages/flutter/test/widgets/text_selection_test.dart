@@ -637,6 +637,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(renderEditable.selectPositionAtCalled, isTrue);
         expect(renderEditable.lastCause, SelectionChangedCause.tap);
@@ -668,6 +669,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(renderEditable.selectPositionAtCalled, isTrue);
         expect(renderEditable.lastCause, SelectionChangedCause.tap);

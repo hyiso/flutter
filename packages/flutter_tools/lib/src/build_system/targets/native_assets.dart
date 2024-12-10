@@ -162,6 +162,8 @@ class NativeAssets extends Target {
           );
         case TargetPlatform.fuchsia_arm64:
         case TargetPlatform.fuchsia_x64:
+        case TargetPlatform.ohos_arm64:
+        case TargetPlatform.ohos_x64:
         case TargetPlatform.web_javascript:
           // TODO(dacoharkes): Implement other OSes. https://github.com/flutter/flutter/issues/129757
           // Write the file we claim to have in the [outputs].
@@ -357,6 +359,8 @@ class NativeAssets extends Target {
       case TargetPlatform.ios:
       case TargetPlatform.linux_arm64:
       case TargetPlatform.linux_x64:
+      case TargetPlatform.ohos_arm64:
+      case TargetPlatform.ohos_x64:
       case TargetPlatform.tester:
       case TargetPlatform.web_javascript:
       case TargetPlatform.windows_x64:

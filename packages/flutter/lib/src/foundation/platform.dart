@@ -75,6 +75,9 @@ enum TargetPlatform {
   /// Linux: <https://www.linux.org>
   linux,
 
+  /// HarmonyOS: <https://www.harmonyos.com>
+  ohos,
+
   /// macOS: <https://www.apple.com/macos>
   macOS,
 

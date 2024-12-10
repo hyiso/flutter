@@ -58,6 +58,7 @@ class TextMagnifier extends StatefulWidget {
           );
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.macOS:
         case TargetPlatform.windows:
           return null;

@@ -39,6 +39,9 @@ abstract class FeatureFlags {
   /// Whether fuchsia is enabled.
   bool get isFuchsiaEnabled => true;
 
+  /// Whether ohos is enabled.
+  bool get isOhosEnabled => true;
+
   /// Whether custom devices are enabled.
   bool get areCustomDevicesEnabled => false;
 
@@ -62,6 +65,7 @@ abstract class FeatureFlags {
 
 /// All current Flutter feature flags.
 const List<Feature> allFeatures = <Feature>[
+  flutterOhosFeature,
   flutterWebFeature,
   flutterLinuxDesktopFeature,
   flutterMacOSDesktopFeature,
@@ -129,6 +133,12 @@ const Feature flutterFuchsiaFeature = Feature(
   master: FeatureChannelSetting(
     available: true,
   ),
+);
+
+/// The [Feature] for Ohos devices.
+const Feature flutterOhosFeature = Feature.fullyEnabled(
+  name: 'Flutter for Ohos',
+  configSetting: 'enable-ohos',
 );
 
 const Feature flutterCustomDevicesFeature = Feature(

@@ -714,6 +714,7 @@ class _ExpansionTileState extends State<ExpansionTile> with SingleTickerProvider
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         break;
     }

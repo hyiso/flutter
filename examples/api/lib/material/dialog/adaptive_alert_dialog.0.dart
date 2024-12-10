@@ -40,6 +40,7 @@ class AdaptiveDialogExample extends StatelessWidget {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         return TextButton(onPressed: onPressed, child: child);
       case TargetPlatform.iOS:

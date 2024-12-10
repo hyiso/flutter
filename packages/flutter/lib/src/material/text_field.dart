@@ -83,6 +83,7 @@ class _TextFieldSelectionGestureDetectorBuilder extends TextSelectionGestureDete
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           Feedback.forLongPress(_state.context);
       }
@@ -895,6 +896,7 @@ class TextField extends StatefulWidget {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         return SpellCheckSuggestionsToolbar.editableText(
           editableTextState: editableTextState,
@@ -1242,6 +1244,7 @@ class _TextFieldState extends State<TextField> with RestorationMixin implements 
       case TargetPlatform.iOS:
       case TargetPlatform.macOS:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
       case TargetPlatform.fuchsia:
       case TargetPlatform.android:
@@ -1254,6 +1257,7 @@ class _TextFieldState extends State<TextField> with RestorationMixin implements 
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.android:
+      case TargetPlatform.ohos:
         break;
       case TargetPlatform.macOS:
       case TargetPlatform.linux:
@@ -1372,6 +1376,7 @@ class _TextFieldState extends State<TextField> with RestorationMixin implements 
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         spellCheckConfiguration = TextField.inferAndroidSpellCheckConfiguration(
           widget.spellCheckConfiguration,
@@ -1424,6 +1429,7 @@ class _TextFieldState extends State<TextField> with RestorationMixin implements 
 
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         forcePressEnabled = false;
         textSelectionControls ??= materialTextSelectionHandleControls;
         paintCursorAboveText = false;

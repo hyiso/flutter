@@ -351,6 +351,7 @@ class _CupertinoSwitchState extends State<CupertinoSwitch> with TickerProviderSt
       case TargetPlatform.linux:
       case TargetPlatform.macOS:
       case TargetPlatform.windows:
+      case TargetPlatform.ohos:
         break;
     }
   }

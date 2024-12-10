@@ -226,6 +226,7 @@ class Typography with Diagnosticable {
         black ??= blackRedwoodCity;
         white ??= whiteRedwoodCity;
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
         black ??= blackHelsinki;
         white ??= whiteHelsinki;
       case null:

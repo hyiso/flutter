@@ -1,0 +1,15 @@
+import path from 'path';
+import { FileUtil, hvigor } from '@ohos/hvigor';
+
+export function includeFlutterPlugins(projectRoot:string) {
+  const hvigorConfig = hvigor.getHvigorConfig();
+  const flutterPluginDependencies = path.join(__dirname, '..', '.flutter-plugins-dependencies');
+  const flutterPluginDependenciesContent = FileUtil.readFileSync(flutterPluginDependencies);
+  const flutterPluginDependenciesJson = JSON.parse(flutterPluginDependenciesContent);
+  const ohosPlugins = flutterPluginDependenciesJson['plugins']['ohos'] ?? [];
+  if (ohosPlugins) {
+    ohosPlugins.forEach((plugin) => {
+      hvigorConfig.includeNode(plugin['name'], path.relative(projectRoot, `${plugin['path']}/ohos`));
+    });
+  }
+}

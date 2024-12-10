@@ -1552,6 +1552,7 @@ class FocusManager with DiagnosticableTreeMixin, ChangeNotifier {
   bool get _respondToWindowFocus => kIsWeb || switch (defaultTargetPlatform) {
     TargetPlatform.android || TargetPlatform.iOS => false,
     TargetPlatform.fuchsia || TargetPlatform.linux => true,
+    TargetPlatform.ohos => true,
     TargetPlatform.windows || TargetPlatform.macOS => true,
   };
 
@@ -2199,6 +2200,7 @@ class _HighlightModeManager {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.iOS:
+      case TargetPlatform.ohos:
         if (WidgetsBinding.instance.mouseTracker.mouseIsConnected) {
           return FocusHighlightMode.traditional;
         }

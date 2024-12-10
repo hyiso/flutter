@@ -27,6 +27,8 @@ void main() {
           expect(theme.builders[platform], isA<OpenUpwardsPageTransitionsBuilder>());
         case TargetPlatform.macOS:
           expect(theme.builders[platform], isA<FadeUpwardsPageTransitionsBuilder>());
+        case TargetPlatform.ohos:
+          expect(theme.builders[platform], isA<OpenRightwardsPageTransitionsBuilder>());
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.windows:

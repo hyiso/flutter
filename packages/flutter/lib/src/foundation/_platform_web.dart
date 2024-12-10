@@ -54,6 +54,7 @@ platform.TargetPlatform _operatingSystemToTargetPlatform(ui_web.OperatingSystem 
     ui_web.OperatingSystem.android => platform.TargetPlatform.android,
     ui_web.OperatingSystem.iOs => platform.TargetPlatform.iOS,
     ui_web.OperatingSystem.linux => platform.TargetPlatform.linux,
+    ui_web.OperatingSystem.ohos => platform.TargetPlatform.ohos,
     ui_web.OperatingSystem.macOs => platform.TargetPlatform.macOS,
     ui_web.OperatingSystem.windows => platform.TargetPlatform.windows,
     // Resolve 'unknown' OS values to `android`.

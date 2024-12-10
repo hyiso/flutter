@@ -439,6 +439,7 @@ class _RadioState<T> extends State<Radio<T>> with TickerProviderStateMixin, Togg
           case TargetPlatform.android:
           case TargetPlatform.fuchsia:
           case TargetPlatform.linux:
+          case TargetPlatform.ohos:
           case TargetPlatform.windows:
             break;
           case TargetPlatform.iOS:
@@ -530,6 +531,7 @@ class _RadioState<T> extends State<Radio<T>> with TickerProviderStateMixin, Togg
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         accessibilitySelected = null;
       case TargetPlatform.iOS:

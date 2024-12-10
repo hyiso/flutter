@@ -6881,6 +6881,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(
           selection,
@@ -7053,6 +7054,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(
           selection,
@@ -7859,6 +7861,7 @@ void main() {
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -7899,6 +7902,7 @@ void main() {
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -8006,6 +8010,7 @@ void main() {
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -8046,6 +8051,7 @@ void main() {
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -8162,6 +8168,7 @@ void main() {
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -8202,6 +8209,7 @@ void main() {
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -8339,6 +8347,7 @@ void main() {
       // These platforms don't handle shift + home/end at all.
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         expect(
           selectionAfterHome,
           equals(
@@ -8685,6 +8694,7 @@ void main() {
       // These platforms don't move the selection with shift + home/end at all.
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -8739,6 +8749,7 @@ void main() {
       // These platforms don't move the selection with home/end at all still.
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -8870,6 +8881,7 @@ void main() {
       // These platforms don't move the selection with home/end at all.
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -8924,6 +8936,7 @@ void main() {
       // These platforms don't move the selection with home/end at all still.
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         expect(
           selection,
           equals(
@@ -12211,6 +12224,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(controller.selection.baseOffset, 17);
         expect(controller.selection.extentOffset, 15);
@@ -14409,6 +14423,7 @@ void main() {
         // Composing changes are ignored on all other platforms.
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
         case TargetPlatform.iOS:
         case TargetPlatform.macOS:
@@ -14468,6 +14483,7 @@ void main() {
         // Composing changes are ignored on all other platforms.
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
         case TargetPlatform.iOS:
         case TargetPlatform.macOS:

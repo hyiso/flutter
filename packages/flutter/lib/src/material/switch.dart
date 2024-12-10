@@ -584,6 +584,7 @@ class Switch extends StatelessWidget {
           case TargetPlatform.android:
           case TargetPlatform.fuchsia:
           case TargetPlatform.linux:
+          case TargetPlatform.ohos:
           case TargetPlatform.windows:
             effectiveActiveThumbColor = activeColor;
           case TargetPlatform.iOS:
@@ -713,6 +714,7 @@ class _MaterialSwitchState extends State<_MaterialSwitch> with TickerProviderSta
               case TargetPlatform.android:
               case TargetPlatform.fuchsia:
               case TargetPlatform.linux:
+              case TargetPlatform.ohos:
               case TargetPlatform.windows:
                 updateCurve();
               case TargetPlatform.iOS:
@@ -788,6 +790,7 @@ class _MaterialSwitchState extends State<_MaterialSwitch> with TickerProviderSta
           case TargetPlatform.android:
           case TargetPlatform.fuchsia:
           case TargetPlatform.linux:
+          case TargetPlatform.ohos:
           case TargetPlatform.windows:
             return widget.size.width - _kSwitchMinSize;
           case TargetPlatform.iOS:
@@ -876,6 +879,7 @@ class _MaterialSwitchState extends State<_MaterialSwitch> with TickerProviderSta
           case TargetPlatform.android:
           case TargetPlatform.fuchsia:
           case TargetPlatform.linux:
+          case TargetPlatform.ohos:
           case TargetPlatform.windows:
             switchConfig = theme.useMaterial3 ? _SwitchConfigM3(context) : _SwitchConfigM2();
             defaults = theme.useMaterial3 ? _SwitchDefaultsM3(context) : _SwitchDefaultsM2(context);
@@ -1758,6 +1762,7 @@ class _SwitchThemeAdaptation extends Adaptation<SwitchThemeData> {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         return defaultValue;
       case TargetPlatform.iOS:

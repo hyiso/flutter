@@ -29,6 +29,7 @@ const List<String> _kAvailablePlatforms = <String>[
   'linux',
   'macos',
   'web',
+  'ohos',
 ];
 
 /// A list of all possible create platforms, even those that may not be enabled
@@ -40,6 +41,7 @@ const List<String> kAllCreatePlatforms = <String>[
   'linux',
   'macos',
   'web',
+  'ohos',
 ];
 
 const String _kDefaultPlatformArgumentHelp =
@@ -361,6 +363,7 @@ abstract class CreateBase extends FlutterCommand {
     bool linux = false,
     bool macos = false,
     bool windows = false,
+    bool ohos = false,
     bool implementationTests = false,
   }) {
     final String pluginDartClass = _createPluginClassName(projectName);
@@ -375,6 +378,8 @@ abstract class CreateBase extends FlutterCommand {
     final String appleIdentifier =
         createUTIIdentifier(organization, projectName);
     final String androidIdentifier =
+        createAndroidIdentifier(organization, projectName);
+    final String ohosIdentifier =
         createAndroidIdentifier(organization, projectName);
     final String windowsIdentifier =
         createWindowsIdentifier(organization, projectName);
@@ -391,6 +396,7 @@ abstract class CreateBase extends FlutterCommand {
       'macosIdentifier': appleIdentifier,
       'linuxIdentifier': linuxIdentifier,
       'windowsIdentifier': windowsIdentifier,
+      'ohosIdentifier':ohosIdentifier,
       'description': projectDescription,
       'dartSdk': '$flutterRoot/bin/cache/dart-sdk',
       'androidMinApiLevel': android_common.minApiLevel,
@@ -420,6 +426,7 @@ abstract class CreateBase extends FlutterCommand {
       'linux': linux,
       'macos': macos,
       'windows': windows,
+      'ohos': ohos,
       'year': DateTime.now().year,
       'dartSdkVersionBounds': dartSdkVersionBounds,
       'implementationTests': implementationTests,
@@ -521,6 +528,7 @@ abstract class CreateBase extends FlutterCommand {
     final bool iosPlatform = templateContext['ios'] as bool? ?? false;
     final bool linuxPlatform = templateContext['linux'] as bool? ?? false;
     final bool macOSPlatform = templateContext['macos'] as bool? ?? false;
+    final bool ohosPlatform = templateContext['ohos'] as bool? ?? false;
     final bool windowsPlatform = templateContext['windows'] as bool? ?? false;
     final bool webPlatform = templateContext['web'] as bool? ?? false;
 
@@ -568,6 +576,9 @@ abstract class CreateBase extends FlutterCommand {
     }
     if (windowsPlatform) {
       platformsForMigrateConfig.add(SupportedPlatform.windows);
+    }
+    if (ohosPlatform) {
+      platformsForMigrateConfig.add(SupportedPlatform.ohos);
     }
     if (templateContext['fuchsia'] == true) {
       platformsForMigrateConfig.add(SupportedPlatform.fuchsia);

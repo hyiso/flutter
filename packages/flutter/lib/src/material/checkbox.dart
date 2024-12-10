@@ -480,6 +480,7 @@ class _CheckboxState extends State<Checkbox> with TickerProviderStateMixin, Togg
           case TargetPlatform.android:
           case TargetPlatform.fuchsia:
           case TargetPlatform.linux:
+          case TargetPlatform.ohos:
           case TargetPlatform.windows:
             break;
           case TargetPlatform.iOS:

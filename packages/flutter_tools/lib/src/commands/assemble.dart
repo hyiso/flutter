@@ -19,6 +19,7 @@ import '../build_system/targets/deferred_components.dart';
 import '../build_system/targets/ios.dart';
 import '../build_system/targets/linux.dart';
 import '../build_system/targets/macos.dart';
+import '../build_system/targets/ohos.dart';
 import '../build_system/targets/windows.dart';
 import '../cache.dart';
 import '../convert.dart';
@@ -87,6 +88,8 @@ List<Target> _kDefaultTargets = <Target>[
   const ProfileBundleWindowsAssets(TargetPlatform.windows_arm64),
   const ReleaseBundleWindowsAssets(TargetPlatform.windows_x64),
   const ReleaseBundleWindowsAssets(TargetPlatform.windows_arm64),
+  // ohos gargets
+  ...ohosTargets,
 ];
 
 /// Assemble provides a low level API to interact with the flutter tool build
@@ -170,7 +173,8 @@ class AssembleCommand extends FlutterCommand {
     }
 
     final TargetPlatform targetPlatform = getTargetPlatformForName(platform);
-    final DevelopmentArtifact? artifact = artifactFromTargetPlatform(targetPlatform);
+    final DevelopmentArtifact? artifact =
+        artifactFromTargetPlatform(targetPlatform);
     if (artifact != null) {
       return <DevelopmentArtifact>{artifact};
     }
@@ -185,13 +189,11 @@ class AssembleCommand extends FlutterCommand {
     }
     final String name = argumentResults.rest.first;
     final Map<String, Target> targetMap = <String, Target>{
-      for (final Target target in _kDefaultTargets)
-        target.name: target,
+      for (final Target target in _kDefaultTargets) target.name: target,
     };
     final List<Target> results = <Target>[
       for (final String targetName in argumentResults.rest)
-        if (targetMap.containsKey(targetName))
-          targetMap[targetName]!,
+        if (targetMap.containsKey(targetName)) targetMap[targetName]!,
     ];
     if (results.isEmpty) {
       throwToolExit('No target named "$name" defined.');
@@ -385,7 +387,8 @@ void writeListIfChanged(List<File> files, String path) {
 
 /// Output performance measurement data in [outFile].
 @visibleForTesting
-void writePerformanceData(Iterable<PerformanceMeasurement> measurements, File outFile) {
+void writePerformanceData(
+    Iterable<PerformanceMeasurement> measurements, File outFile) {
   final Map<String, Object> jsonData = <String, Object>{
     'targets': <Object>[
       for (final PerformanceMeasurement measurement in measurements)

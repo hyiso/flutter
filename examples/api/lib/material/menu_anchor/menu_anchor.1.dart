@@ -228,6 +228,7 @@ class _MyContextMenuState extends State<MyContextMenu> {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         // Don't open the menu on these platforms with a Ctrl-tap (or a
         // tap).

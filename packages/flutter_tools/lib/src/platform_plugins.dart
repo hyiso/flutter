@@ -296,6 +296,73 @@ class IOSPlugin extends PluginPlatform implements NativeOrDartPlugin, DarwinPlug
   }
 }
 
+class OhosPlugin extends PluginPlatform implements NativeOrDartPlugin {
+  OhosPlugin({
+    required this.name,
+    this.package,
+    this.pluginClass,
+    this.dartPluginClass,
+    bool? ffiPlugin,
+    this.defaultPackage,
+  }) : ffiPlugin = ffiPlugin ?? false;
+
+  OhosPlugin.fromYaml(this.name, YamlMap yaml)
+      : assert(validate(yaml)),
+        package = yaml['package'] as String?,
+        pluginClass = yaml[kPluginClass] as String?,
+        dartPluginClass = yaml[kDartPluginClass] as String?,
+        ffiPlugin = yaml[kFfiPlugin] as bool? ?? false,
+        defaultPackage = yaml[kDefaultPackage] as String?;
+
+  @override
+  bool hasMethodChannel() => pluginClass != null;
+
+  @override
+  bool hasFfi() => ffiPlugin;
+
+  @override
+  bool hasDart() => dartPluginClass != null;
+
+  static bool validate(YamlMap yaml) {
+    return yaml[kPluginClass] is String ||
+        yaml[kDartPluginClass] is String ||
+        yaml[kFfiPlugin] == true ||
+        yaml[kDefaultPackage] is String;
+  }
+
+  static const String kConfigKey = 'ohos';
+
+  /// The plugin name defined in pubspec.yaml.
+  final String name;
+
+  /// The plugin package name defined in pubspec.yaml.
+  final String? package;
+
+  /// The native plugin main class defined in pubspec.yaml, if any.
+  final String? pluginClass;
+
+  /// The Dart plugin main class defined in pubspec.yaml, if any.
+  final String? dartPluginClass;
+
+  /// Is FFI plugin defined in pubspec.yaml.
+  final bool ffiPlugin;
+
+  /// The default implementation package defined in pubspec.yaml, if any.
+  final String? defaultPackage;
+
+ @override
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      if (package != null) 'package': package,
+      if (pluginClass != null) 'class': pluginClass,
+      if (dartPluginClass != null) kDartPluginClass: dartPluginClass,
+      if (ffiPlugin) kFfiPlugin: true,
+      if (defaultPackage != null) kDefaultPackage: defaultPackage,
+    };
+  }
+}
+
 /// Contains the parameters to template a macOS plugin.
 ///
 /// The [name] of the plugin is required. Either [dartPluginClass] or

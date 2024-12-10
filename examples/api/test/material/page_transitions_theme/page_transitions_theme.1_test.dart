@@ -29,6 +29,7 @@ void main() {
         case TargetPlatform.macOS:
         case TargetPlatform.linux:
         case TargetPlatform.fuchsia:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           expect(theme.builders[platform], isNull);
       }

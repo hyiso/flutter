@@ -473,6 +473,7 @@ class TestFeatureFlags implements FeatureFlags {
     this.isAndroidEnabled = true,
     this.isIOSEnabled = true,
     this.isFuchsiaEnabled = false,
+    this.isOhosEnabled = false,
     this.areCustomDevicesEnabled = false,
     this.isCliAnimationEnabled = true,
     this.isNativeAssetsEnabled = false,
@@ -502,6 +503,9 @@ class TestFeatureFlags implements FeatureFlags {
   final bool isFuchsiaEnabled;
 
   @override
+  final bool isOhosEnabled;
+
+  @override
   final bool areCustomDevicesEnabled;
 
   @override
@@ -526,6 +530,7 @@ class TestFeatureFlags implements FeatureFlags {
       flutterAndroidFeature => isAndroidEnabled,
       flutterIOSFeature => isIOSEnabled,
       flutterFuchsiaFeature => isFuchsiaEnabled,
+      flutterOhosFeature => isOhosEnabled,
       flutterCustomDevicesFeature => areCustomDevicesEnabled,
       cliAnimation => isCliAnimationEnabled,
       nativeAssets => isNativeAssetsEnabled,

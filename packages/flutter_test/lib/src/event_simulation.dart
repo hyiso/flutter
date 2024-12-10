@@ -65,6 +65,7 @@ abstract final class KeyEventSimulator {
       case 'web':
       case 'ios':
       case 'windows':
+      case 'ohos':
         return true;
     }
     return false;
@@ -114,6 +115,8 @@ abstract final class KeyEventSimulator {
           map = kAndroidToLogicalKey;
         case 'fuchsia':
           map = kFuchsiaToLogicalKey;
+        case 'ohos':
+          map = kOhosToLogicalKey;
         case 'macos':
         // macOS doesn't do key codes, just scan codes.
           return -1;
@@ -200,6 +203,8 @@ abstract final class KeyEventSimulator {
           map = kAndroidToPhysicalKey;
         case 'fuchsia':
           map = kFuchsiaToPhysicalKey;
+        case 'ohos':
+          map = kOhosToPhysicalKey;
         case 'macos':
           map = kMacOsToPhysicalKey;
         case 'ios':
@@ -262,6 +267,14 @@ abstract final class KeyEventSimulator {
     final int scanCode = _getScanCode(physicalKey, platform);
 
     switch (platform) {
+      case 'ohos':
+        result['keyCode'] = keyCode;
+        result['deviceId'] = 1;
+        if (resultCharacter.isNotEmpty) {
+          result['character'] = resultCharacter;
+        } else {
+          result['character'] = '';
+        }
       case 'android':
         result['keyCode'] = keyCode;
         if (resultCharacter.isNotEmpty) {

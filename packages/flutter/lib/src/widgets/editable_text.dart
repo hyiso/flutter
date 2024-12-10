@@ -2096,6 +2096,7 @@ class EditableText extends StatefulWidget {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           break;
       }
@@ -2384,6 +2385,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         return textEditingValue.text.isNotEmpty
            && !(textEditingValue.selection.start == 0
@@ -2423,6 +2425,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
       case TargetPlatform.macOS:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         return false;
     }
@@ -2477,6 +2480,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
+        case TargetPlatform.ohos:
           // Collapse the selection and hide the toolbar and handles.
           userUpdateTextEditingValue(
             TextEditingValue(
@@ -2582,6 +2586,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
         case TargetPlatform.android:
         case TargetPlatform.iOS:
         case TargetPlatform.fuchsia:
+        case TargetPlatform.ohos:
           break;
         case TargetPlatform.macOS:
         case TargetPlatform.linux:
@@ -2592,6 +2597,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           bringIntoView(textEditingValue.selection.extent);
         case TargetPlatform.macOS:
@@ -3007,7 +3013,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
       }
     }
 
-    if (defaultTargetPlatform != TargetPlatform.iOS && defaultTargetPlatform != TargetPlatform.android) {
+    if (defaultTargetPlatform != TargetPlatform.iOS && defaultTargetPlatform != TargetPlatform.android || defaultTargetPlatform == TargetPlatform.ohos) {
       return;
     }
 
@@ -3763,6 +3769,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
     TargetPlatform.fuchsia ||
     TargetPlatform.linux ||
     TargetPlatform.macOS ||
+    TargetPlatform.ohos  ||
     TargetPlatform.windows => false,
   };
 
@@ -4218,6 +4225,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
         }
       case TargetPlatform.linux:
       case TargetPlatform.windows:
+      case TargetPlatform.ohos:
       case TargetPlatform.fuchsia:
       case TargetPlatform.android:
         if (cause == SelectionChangedCause.drag) {
@@ -5094,6 +5102,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
       case TargetPlatform.android:
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
       // On mobile platforms, we don't unfocus on touch events unless they're
       // in the web browser, but we do unfocus for all other kinds of events.
         switch (event.kind) {
@@ -5196,6 +5205,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
                   case TargetPlatform.macOS:
                   case TargetPlatform.fuchsia:
                   case TargetPlatform.linux:
+                  case TargetPlatform.ohos:
                   case TargetPlatform.windows:
                     // Composing text is not counted in history coalescing.
                     if (!widget.controller.value.composing.isCollapsed) {

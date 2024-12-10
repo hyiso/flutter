@@ -276,14 +276,16 @@ class CreateCommand extends CreateBase {
     final String dartSdk = globals.cache.dartSdkBuild;
     final bool includeIos;
     final bool includeAndroid;
+    final bool includeOhos;
     final bool includeWeb;
     final bool includeLinux;
     final bool includeMacos;
     final bool includeWindows;
     if (template == FlutterProjectType.module) {
-      // The module template only supports iOS and Android.
+      // The module template only supports Ohos, iOS and Android.
       includeIos = true;
       includeAndroid = true;
+      includeOhos = true;
       includeWeb = false;
       includeLinux = false;
       includeMacos = false;
@@ -292,6 +294,7 @@ class CreateCommand extends CreateBase {
       // The package template does not supports any platform.
       includeIos = false;
       includeAndroid = false;
+      includeOhos = false;
       includeWeb = false;
       includeLinux = false;
       includeMacos = false;
@@ -303,6 +306,7 @@ class CreateCommand extends CreateBase {
       includeLinux = featureFlags.isLinuxEnabled && platforms.contains('linux');
       includeMacos = featureFlags.isMacOSEnabled && platforms.contains('macos');
       includeWindows = featureFlags.isWindowsEnabled && platforms.contains('windows');
+      includeOhos = featureFlags.isOhosEnabled && platforms.contains('ohos');
     }
 
     String? developmentTeam;
@@ -335,6 +339,7 @@ class CreateCommand extends CreateBase {
       iosDevelopmentTeam: developmentTeam,
       ios: includeIos,
       android: includeAndroid,
+      ohos: includeOhos,
       web: includeWeb,
       linux: includeLinux,
       macos: includeMacos,
@@ -708,6 +713,7 @@ Your $application code is in $relativeAppMain.
     final String exampleProjectName = '${projectName}_example';
     templateContext['projectName'] = exampleProjectName;
     templateContext['androidIdentifier'] = CreateBase.createAndroidIdentifier(organization, exampleProjectName);
+    templateContext['ohosIdentifier'] = CreateBase.createAndroidIdentifier(organization, exampleProjectName);
     templateContext['iosIdentifier'] = CreateBase.createUTIIdentifier(organization, exampleProjectName);
     templateContext['macosIdentifier'] = CreateBase.createUTIIdentifier(organization, exampleProjectName);
     templateContext['windowsIdentifier'] = CreateBase.createWindowsIdentifier(organization, exampleProjectName);

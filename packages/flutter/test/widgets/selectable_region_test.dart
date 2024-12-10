@@ -709,6 +709,7 @@ void main() {
       case TargetPlatform.fuchsia:
       case TargetPlatform.iOS:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.macOS:
       case TargetPlatform.windows:
         expect(log, isEmpty);
@@ -3784,6 +3785,7 @@ void main() {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           alt = false;
           control = true;
@@ -3899,6 +3901,7 @@ void main() {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           meta = false;
           alt = true;
@@ -3993,6 +3996,7 @@ void main() {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
+        case TargetPlatform.ohos:
         case TargetPlatform.windows:
           meta = false;
           alt = true;
@@ -4319,6 +4323,7 @@ void main() {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         expect(regionState.selectionOverlay, isNull);
         expect(regionState.selectionOverlay?.startHandleLayerLink, isNull);
         expect(regionState.selectionOverlay?.endHandleLayerLink, isNull);
@@ -4375,6 +4380,7 @@ void main() {
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(buttonItems[1].type, ContextMenuButtonType.selectAll);
         selectAllButton = buttonItems[1];
@@ -4389,6 +4395,7 @@ void main() {
       case TargetPlatform.android:
       case TargetPlatform.iOS:
       case TargetPlatform.fuchsia:
+      case TargetPlatform.ohos:
         expect(regionState.selectionOverlay, isNotNull);
         expect(regionState.selectionOverlay?.startHandleLayerLink, isNotNull);
         expect(regionState.selectionOverlay?.endHandleLayerLink, isNotNull);
@@ -4514,6 +4521,7 @@ void main() {
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(buttonItems.length, 2);
         expect(buttonItems[0].type, ContextMenuButtonType.copy);

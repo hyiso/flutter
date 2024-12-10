@@ -41,6 +41,7 @@ void main() {
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.macOS:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         expect(find.byType(AdaptiveTextSelectionToolbar), findsOneWidget);
         expect(find.byType(SystemContextMenu), findsNothing);

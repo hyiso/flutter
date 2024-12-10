@@ -199,6 +199,7 @@ class _CalendarDatePickerState extends State<CalendarDatePicker> {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
+      case TargetPlatform.ohos:
       case TargetPlatform.windows:
         HapticFeedback.vibrate();
       case TargetPlatform.iOS:
@@ -272,6 +273,7 @@ class _CalendarDatePickerState extends State<CalendarDatePicker> {
         case TargetPlatform.android:
         case TargetPlatform.iOS:
         case TargetPlatform.fuchsia:
+        case TargetPlatform.ohos:
           break;
       }
     });
